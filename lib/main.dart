@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,32 +21,19 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.green,
           title: const Text('Flutter is fun'),
         ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          addAutomaticKeepAlives: false,
-          children: [
-            Container(
-              color: Colors.amber,
-              height: 500,
-              width: 100,
-            ),
-            Container(
-              height: 500,
-              width: 100,
-              color: Colors.blueGrey,
-            ),
-            Container(
-              height: 500,
-              width: 100,
-              color: Colors.cyan,
-            ),
-          ],
-        ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            print("Pressed");
+            setState(() {
+              count++;
+            });
           },
+        ),
+        body: Center(
+          child: Text(
+            '$count',
+            style: const TextStyle(fontSize: 60),
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: const [
