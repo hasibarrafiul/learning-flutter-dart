@@ -49,8 +49,12 @@ class _MyAppState extends State<MyApp> {
             '$count',
             style: const TextStyle(fontSize: 60),
           ),
-          ElevatedButton(
-            child: const Text('About'),
+          IconButton(
+            icon: Hero(
+              tag: 'img',
+              child: Image.asset('assets/safa.jpg'),
+            ),
+            iconSize: 50,
             onPressed: () {
               Navigator.push(
                 context,
@@ -87,6 +91,10 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.amber,
         title: const Text('About Screen'),
+      ),
+      body: Hero(
+        tag: 'img',
+        child: Image.asset('assets/safa.jpg'),
       ),
     );
   }
